@@ -1,5 +1,6 @@
 # Spojení z IDOSu do Google Kalendáře
 Skript přidá do výpisu spojení z IDOSu vedle odkazu „Přidat do kalendáře“ nový odkaz „Přidat do Google Kalendáře“. Spoje do Google Kalendáře je pak možné přidávat rovnou (není nutné ukládat `iCal` soubor na disk a importovat do kalendáře ručně).
+Událost v kalendáři určenou k uložení otevírá skript v nové záložce. Při prvním použití na nové adrese je tedy nutné schválit otevírání vyskakovacích oken.
 
 ## Volba výchozího kalendáře
 
