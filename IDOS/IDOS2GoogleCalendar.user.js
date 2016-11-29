@@ -2,9 +2,10 @@
 // @name         Spojení z IDOSu do Google Kalendáře
 // @namespace    http://idos.cz/
 // @version      1.0
-// @description  try to take over the world!
+// @description  Skript přidá do výpisu spojení z IDOSu vedle odkazu „Přidat do kalendáře“ nový odkaz „Přidat do Google Kalendáře“, který umožní dané spojení přidat do Google Kalendáře přímo.
 // @author       Filip Jirsák
 // @match        http://pid.idos.cz/spojeni/*
+// @match        http://jizdnirady.idnes.cz/*/spojeni/*
 // @connect      self
 // @grant        GM_registerMenuCommand
 // @grant        GM_xmlhttpRequest
@@ -48,18 +49,6 @@ var CALENDAR_ID = "calendar.id";
             }
         }
     }
-    /*
-    function parseLine() {
-        var prostredek = $('td:eq(6)', this);
-        return {
-            zastavka: trimDown($('td:eq(2)', this).text()),
-            prijezd: parseTime($('td:eq(3)', this).text()),
-            odjezd: parseTime($('td:eq(4)', this).text()),
-            prostredek: trimDown(prostredek.text()),
-            typProstredku: $('> a', prostredek).attr('title')
-        };
-    }
-*/
 
     function exportCalendar(icalLink) {
         GM_xmlhttpRequest({
@@ -100,36 +89,9 @@ var CALENDAR_ID = "calendar.id";
         $('.results').each(function() {
             var icalLink = new URL($('p.links > a:eq(6)', this).attr('href'), window.location.href);
             createCalendarLink(this, icalLink);
-            /*
-        var spojeni = $('tr.datarow', this).map(parseLine).get();
-        var details = '';
-
-        var params = {
-            action: 'TEMPLATE',
-            text: title($('#main-res-inner h1').text()),
-            details: details,
-            dates: kalendarniDatum(
-                datumSpojeni($('tr.datarow.first td.date', node).text()),
-                casSpojeni($('tr.datarow.first td:eq(4)', node).text()),
-                casSpojeni($('tr.datarow:last td:eq(3)', node).text())
-            )
-        };
-
-        createCalendarLink(this, params)
-        */
         });
     }
 
-    function observeChanges() {
-        var parent = $('#main-res-inner')[0];
-        var observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                console.log(mutation.type);
-            });
-        });
-        observer.observe(parent, {childList: true});
-    }
-//    $('.results').bind("DOMSubtreeModified", appendLinks);
     appendLinks();
 })();
 
