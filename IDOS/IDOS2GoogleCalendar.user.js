@@ -1,7 +1,7 @@
 // ==UserScript==
-// @name         Spojení z IDOSu do Google Kalendáře
+// @name         IDOS – uložení spojení do Google Kalendáře
 // @namespace    http://idos.cz/
-// @version      1.0
+// @version      1.0.1
 // @description  Skript přidá do výpisu spojení z IDOSu vedle odkazu „Přidat do kalendáře“ nový odkaz „Přidat do Google Kalendáře“, který umožní dané spojení přidat do Google Kalendáře přímo.
 // @author       Filip Jirsák
 // @match        http://pid.idos.cz/spojeni/*
@@ -80,9 +80,9 @@ var CALENDAR_ID = "calendar.id";
     }
 
     function createCalendarLink(node, icalLink) {
-        $('p.links', node)
-            .append(' | ', '<a href="#">Přidat do Google Kalendáře</a>')
+        var link = $('<a href="#">Přidat do Google Kalendáře</a>')
             .click($.proxy(exportCalendar, undefined, icalLink));
+        $('p.links', node).append(' | ', link);
     }
 
     function appendLinks() {
