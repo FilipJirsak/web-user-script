@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         IDOS – uložení spojení do Google Kalendáře
 // @namespace    http://idos.cz/
-// @version      1.0.1
+// @version      1.0.2
 // @description  Skript přidá do výpisu spojení z IDOSu vedle odkazu „Přidat do kalendáře“ nový odkaz „Přidat do Google Kalendáře“, který umožní dané spojení přidat do Google Kalendáře přímo.
 // @author       Filip Jirsák
 // @match        http://pid.idos.cz/spojeni/*
